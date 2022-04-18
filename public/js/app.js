@@ -2291,7 +2291,7 @@ __webpack_require__.r(__webpack_exports__);
         icon: 'mdi-home',
         to: "/admin"
       }, {
-        title: '撮影場所一覧',
+        title: '撮影場所',
         icon: 'mdi-view-dashboard',
         to: "/place"
       }, {
