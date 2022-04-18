@@ -2291,11 +2291,11 @@ __webpack_require__.r(__webpack_exports__);
         icon: 'mdi-home',
         to: "/admin"
       }, {
-        title: '撮影場所',
+        title: '撮影場所管理',
         icon: 'mdi-view-dashboard',
         to: "/place"
       }, {
-        title: '写真登録',
+        title: '写真登録管理',
         icon: 'mdi-image',
         to: "/photo-display"
       }]
