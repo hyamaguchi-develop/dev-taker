@@ -46,7 +46,8 @@ export default {
             items: [
                 {title: '管理者', icon: 'mdi-home', to: "/admin"},
                 {title: '撮影場所管理', icon: 'mdi-view-dashboard', to: "/place"},
-                {title: '写真登録管理', icon: 'mdi-image', to: "/photo-display"}
+                {title: '写真登録管理', icon: 'mdi-image', to: "/photo-display"},
+                {title: '絶景スポット', icon: 'mdi-airplane', to: "/superb-view"}
             ]
         }
     }

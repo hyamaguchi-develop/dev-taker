@@ -18,8 +18,8 @@ window.Vue = require('vue');
 Vue.use(VueRouter);
 Vue.use(Vuetify)
 
-
-Vue.component('header-component', require('./components/HeaderComponent.vue').default);
+// サイドナビゲーション
+Vue.component('header-component', require('./components/sidemenu/HeaderComponent.vue').default);
 
 
 const app = new Vue({

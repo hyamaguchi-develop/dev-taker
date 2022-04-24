@@ -28,6 +28,10 @@ Route::get('/admin', function () {
 Route::get('/photo-display', function () {
     return view('home');
 });
+
+Route::get('/superb-view', function () {
+    return view('home');
+});
 // 2021/05/16 リロード時、404エラー対応処理 end
 
 Auth::routes();
