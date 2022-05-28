@@ -2851,6 +2851,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2899,6 +2915,7 @@ __webpack_require__.r(__webpack_exports__);
       }],
       // 写真情報格納用
       photoInfo: [],
+      registerDialog: false,
       editedItem: {// default値を設定可能
       },
 
@@ -2970,6 +2987,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     close: function close() {
       this.editedItem = Object.assign({}, this.editedItem);
+      this.registerDialog = false;
     },
 
     /**
@@ -40186,6 +40204,7 @@ var render = function() {
                   _c(
                     "v-btn",
                     {
+                      staticClass: "ma-2",
                       attrs: { small: "", color: "error" },
                       on: {
                         click: function($event) {
@@ -40193,7 +40212,21 @@ var render = function() {
                         }
                       }
                     },
-                    [_vm._v("\n\t\t\tdelete\n\t\t\t")]
+                    [_vm._v("\n\t\t\t削除\n\t\t\t")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    {
+                      staticClass: "ma-2",
+                      attrs: { color: "primary", dark: "" },
+                      on: {
+                        click: function($event) {
+                          _vm.registerDialog = true
+                        }
+                      }
+                    },
+                    [_vm._v("\n\t\t\t登録\n\t\t\t")]
                   )
                 ]
               }
@@ -40205,182 +40238,205 @@ var render = function() {
       }),
       _vm._v(" "),
       _c(
-        "v-card",
+        "v-dialog",
+        {
+          attrs: { "max-width": "500px" },
+          model: {
+            value: _vm.registerDialog,
+            callback: function($$v) {
+              _vm.registerDialog = $$v
+            },
+            expression: "registerDialog"
+          }
+        },
         [
           _c(
-            "v-card-text",
+            "v-card",
             [
               _c(
-                "v-container",
+                "v-card-text",
                 [
                   _c(
-                    "v-row",
+                    "v-container",
                     [
                       _c(
-                        "v-col",
-                        { attrs: { cols: "12", sm: "6", md: "4" } },
+                        "v-row",
                         [
-                          _c("v-text-field", {
-                            attrs: { label: "写真ID※自動で割り振られます" },
-                            model: {
-                              value: _vm.editedItem.photo_id,
-                              callback: function($$v) {
-                                _vm.$set(_vm.editedItem, "photo_id", $$v)
-                              },
-                              expression: "editedItem.photo_id"
-                            }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-col",
-                        { attrs: { cols: "12", sm: "6", md: "4" } },
-                        [
-                          _c("v-text-field", {
-                            attrs: { label: "撮影場所" },
-                            model: {
-                              value: _vm.editedItem.shooting_location,
-                              callback: function($$v) {
-                                _vm.$set(
-                                  _vm.editedItem,
-                                  "shooting_location",
-                                  $$v
-                                )
-                              },
-                              expression: "editedItem.shooting_location"
-                            }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-col",
-                        { attrs: { cols: "12", sm: "6", md: "4" } },
-                        [
-                          _c("v-select", {
-                            attrs: { items: _vm.prefecture, label: "都道府県" },
-                            model: {
-                              value: _vm.editedItem.prefecture,
-                              callback: function($$v) {
-                                _vm.$set(_vm.editedItem, "prefecture", $$v)
-                              },
-                              expression: "editedItem.prefecture"
-                            }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-col",
-                        { attrs: { cols: "12", sm: "6", md: "4" } },
-                        [
-                          _c("v-text-field", {
-                            attrs: { label: "ISO感度" },
-                            model: {
-                              value: _vm.editedItem.iso,
-                              callback: function($$v) {
-                                _vm.$set(_vm.editedItem, "iso", $$v)
-                              },
-                              expression: "editedItem.iso"
-                            }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-col",
-                        { attrs: { cols: "12", sm: "6", md: "4" } },
-                        [
-                          _c("v-text-field", {
-                            attrs: { label: "F値" },
-                            model: {
-                              value: _vm.editedItem.f_value,
-                              callback: function($$v) {
-                                _vm.$set(_vm.editedItem, "f_value", $$v)
-                              },
-                              expression: "editedItem.f_value"
-                            }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-col",
-                        { attrs: { cols: "12", sm: "6", md: "4" } },
-                        [
-                          _c("v-text-field", {
-                            attrs: { label: "シャッター速度" },
-                            model: {
-                              value: _vm.editedItem.shutter_speed,
-                              callback: function($$v) {
-                                _vm.$set(_vm.editedItem, "shutter_speed", $$v)
-                              },
-                              expression: "editedItem.shutter_speed"
-                            }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-col",
-                        { attrs: { cols: "12", sm: "6", md: "4" } },
-                        [
-                          _c("v-select", {
-                            attrs: {
-                              items: _vm.time_zone_item,
-                              label: "時間帯"
-                            },
-                            model: {
-                              value: _vm.editedItem.time_zone,
-                              callback: function($$v) {
-                                _vm.$set(_vm.editedItem, "time_zone", $$v)
-                              },
-                              expression: "editedItem.time_zone"
-                            }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-col",
-                        { attrs: { cols: "12", sm: "6", md: "4" } },
-                        [
-                          _c("v-text-field", {
-                            attrs: { label: "三脚有無" },
-                            model: {
-                              value: _vm.editedItem.is_tripod,
-                              callback: function($$v) {
-                                _vm.$set(_vm.editedItem, "is_tripod", $$v)
-                              },
-                              expression: "editedItem.is_tripod"
-                            }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-col",
-                        { attrs: { cols: "12", sm: "6", md: "4" } },
-                        [
-                          _c("v-text-field", {
-                            attrs: { label: "備考" },
-                            model: {
-                              value: _vm.editedItem.other,
-                              callback: function($$v) {
-                                _vm.$set(_vm.editedItem, "other", $$v)
-                              },
-                              expression: "editedItem.other"
-                            }
-                          })
+                          _c(
+                            "v-col",
+                            { attrs: { cols: "12", sm: "6", md: "4" } },
+                            [
+                              _c("v-text-field", {
+                                attrs: { label: "写真ID※自動で割り振られます" },
+                                model: {
+                                  value: _vm.editedItem.photo_id,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.editedItem, "photo_id", $$v)
+                                  },
+                                  expression: "editedItem.photo_id"
+                                }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-col",
+                            { attrs: { cols: "12", sm: "6", md: "4" } },
+                            [
+                              _c("v-text-field", {
+                                attrs: { label: "撮影場所" },
+                                model: {
+                                  value: _vm.editedItem.shooting_location,
+                                  callback: function($$v) {
+                                    _vm.$set(
+                                      _vm.editedItem,
+                                      "shooting_location",
+                                      $$v
+                                    )
+                                  },
+                                  expression: "editedItem.shooting_location"
+                                }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-col",
+                            { attrs: { cols: "12", sm: "6", md: "4" } },
+                            [
+                              _c("v-select", {
+                                attrs: {
+                                  items: _vm.prefecture,
+                                  label: "都道府県"
+                                },
+                                model: {
+                                  value: _vm.editedItem.prefecture,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.editedItem, "prefecture", $$v)
+                                  },
+                                  expression: "editedItem.prefecture"
+                                }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-col",
+                            { attrs: { cols: "12", sm: "6", md: "4" } },
+                            [
+                              _c("v-text-field", {
+                                attrs: { label: "ISO感度" },
+                                model: {
+                                  value: _vm.editedItem.iso,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.editedItem, "iso", $$v)
+                                  },
+                                  expression: "editedItem.iso"
+                                }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-col",
+                            { attrs: { cols: "12", sm: "6", md: "4" } },
+                            [
+                              _c("v-text-field", {
+                                attrs: { label: "F値" },
+                                model: {
+                                  value: _vm.editedItem.f_value,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.editedItem, "f_value", $$v)
+                                  },
+                                  expression: "editedItem.f_value"
+                                }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-col",
+                            { attrs: { cols: "12", sm: "6", md: "4" } },
+                            [
+                              _c("v-text-field", {
+                                attrs: { label: "シャッター速度" },
+                                model: {
+                                  value: _vm.editedItem.shutter_speed,
+                                  callback: function($$v) {
+                                    _vm.$set(
+                                      _vm.editedItem,
+                                      "shutter_speed",
+                                      $$v
+                                    )
+                                  },
+                                  expression: "editedItem.shutter_speed"
+                                }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-col",
+                            { attrs: { cols: "12", sm: "6", md: "4" } },
+                            [
+                              _c("v-select", {
+                                attrs: {
+                                  items: _vm.time_zone_item,
+                                  label: "時間帯"
+                                },
+                                model: {
+                                  value: _vm.editedItem.time_zone,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.editedItem, "time_zone", $$v)
+                                  },
+                                  expression: "editedItem.time_zone"
+                                }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-col",
+                            { attrs: { cols: "12", sm: "6", md: "4" } },
+                            [
+                              _c("v-text-field", {
+                                attrs: { label: "三脚有無" },
+                                model: {
+                                  value: _vm.editedItem.is_tripod,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.editedItem, "is_tripod", $$v)
+                                  },
+                                  expression: "editedItem.is_tripod"
+                                }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-col",
+                            { attrs: { cols: "12", sm: "6", md: "4" } },
+                            [
+                              _c("v-text-field", {
+                                attrs: { label: "備考" },
+                                model: {
+                                  value: _vm.editedItem.other,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.editedItem, "other", $$v)
+                                  },
+                                  expression: "editedItem.other"
+                                }
+                              })
+                            ],
+                            1
+                          )
                         ],
                         1
                       )
@@ -40389,32 +40445,32 @@ var render = function() {
                   )
                 ],
                 1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-card-actions",
-            [
-              _c("v-spacer"),
-              _vm._v(" "),
-              _c(
-                "v-btn",
-                {
-                  attrs: { color: "blue darken-1", text: "" },
-                  on: { click: _vm.close }
-                },
-                [_vm._v("\n\t\t\t\tCancel\n\t\t\t\t")]
               ),
               _vm._v(" "),
               _c(
-                "v-btn",
-                {
-                  attrs: { color: "blue darken-1", text: "" },
-                  on: { click: _vm.save }
-                },
-                [_vm._v("\n\t\t\t\tSave\n\t\t\t\t")]
+                "v-card-actions",
+                [
+                  _c("v-spacer"),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { color: "blue darken-1", text: "" },
+                      on: { click: _vm.close }
+                    },
+                    [_vm._v("\n\t\t\t\tCancel\n\t\t\t\t")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { color: "blue darken-1", text: "" },
+                      on: { click: _vm.save }
+                    },
+                    [_vm._v("\n\t\t\t\tSave\n\t\t\t\t")]
+                  )
+                ],
+                1
               )
             ],
             1

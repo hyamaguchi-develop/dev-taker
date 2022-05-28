@@ -4,17 +4,32 @@
          :headers="headers"
          :items="photoInfo"
     	>
-		<!-- 削除機能追加 -->
+		
 		<template v-slot:[`item.delete`]="{ item }">
+			<!-- 削除機能追加 -->
 			<v-btn
 			small
 			color="error"
+			class="ma-2"
 			@click="deleteItem(item)"
 			>
-			delete
+			削除
+			</v-btn>
+			<!-- 削除機能追加 -->
+			<v-btn
+			color="primary"
+			class="ma-2"
+			dark
+			@click="registerDialog = true"
+			>
+			登録
 			</v-btn>
         </template>
 		</v-data-table>
+		<v-dialog
+        v-model="registerDialog"
+        max-width="500px"
+      	>
 		<v-card>
 			<v-card-text>
 				<!-- 登録項目の追加箇所 -->
@@ -139,6 +154,7 @@
 				</v-btn>
 			</v-card-actions>
 		</v-card>
+	</v-dialog>
 		<button v-on:click="downloadCSV">
 		CSVダウンロード
 		</button>
@@ -171,7 +187,7 @@ export default {
       			],
 				// 写真情報格納用
 				photoInfo:[],
-
+				registerDialog: false,
 				editedItem: {
 					// default値を設定可能
 				},
@@ -262,6 +278,7 @@ export default {
 			},
 			close () {
 				this.editedItem = Object.assign({}, this.editedItem)
+				this.registerDialog = false;
 			},
 			/**
 			 * resetForm フォームリセット
