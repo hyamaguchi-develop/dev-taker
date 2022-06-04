@@ -250,9 +250,11 @@ export default {
 				// add content in db
 				var self = this
 				var url = '/api/photoInfo/'
+				console.log(this.editedItem);
 				axios.post(url, self.editedItem)
                 .then(response => {
 					// do not describe
+					console.log(response);
 					this.resetForm();
                 })
                 .catch(err => {

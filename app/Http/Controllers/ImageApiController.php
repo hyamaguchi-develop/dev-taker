@@ -14,11 +14,8 @@ class ImageApiController extends Controller
      */
     public function index()
     {
-        //
         $image = Image::all();
-        
-
-        return response()->json(['image' => $image]);
+        return $image;
     }
 
     /**
@@ -29,18 +26,25 @@ class ImageApiController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        // $image = new Image();
-        // $image->fill($request->all())->save();
-        if (request()->image_path) {
-            $file_name = time() . '.' . request()->image_path->getClientOriginalName();
-            request()->image_path->storeAs('public/storage', $file_name);
-
+        $this->validate($request, [
+            'title' => 'required|max:7',
+            'file' => 'required|image'
+        ], [
+            'title.required' => 'タイトルを入力して下さい',
+            'title.max' => '7文字以内で入力して下さい',
+            'file.required' => '画像が選択されていません',
+            'file.image' => '画像ファイルではありません',
+        ]);
+ 
+        if (request()->file) {
+            $file_name = time() . '.' . request()->file->getClientOriginalName();
+            request()->file->storeAs('public', $file_name);
+ 
             $image = new Image();
-            $image->image_path = 'storage/' . $file_name;
-            $image->image_title = $request->image_title;
+            $image->path = 'storage/' . $file_name;
+            $image->title = $request->title;
             $image->save();
-
+ 
             return ['success' => '登録しました!'];
         }
     }
